@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  /* Darker, fancier theme */
+  background: linear-gradient(270deg, #0f0c29, #302b63, #24243e);
+  color: #e0e0e0; /* Light text for dark background */
+  animation: gradientAnimation 20s ease infinite;
+  background-size: 400% 400%; /* For smoother gradient animation */
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.transfer-container {
+  background-color: rgba(10, 25, 47, 0.85); /* Dark blue, semi-transparent */
+  border-radius: 12px; /* Slightly more rounded */
+  width: 100%;
+  max-width: 600px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(10px); /* Stronger blur for frosted glass effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+.title {
+  font-size: 2.8rem; /* Slightly larger */
+  font-weight: 700;
+  margin-bottom: 12px; /* Increased margin */
+  color: #ffffff;
+  animation: fadeInDown 1s ease-out, textShine 3s infinite alternate; /* Added textShine */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Keyframes for text shine effect */
+@keyframes textShine {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255,255,255,0.2);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(0, 200, 255, 0.3);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95); /* Added scale */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95); /* Added scale */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.subtitle {
+  font-size: 1.3rem; /* Slightly larger */
+  color: #b0b0b0; /* Lighter gray for subtitle */
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out 0.5s;
+  animation-fill-mode: backwards;
+}
+
+.search-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px; /* Increased margin */
+  animation: fadeInUp 1s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+
+.search-input {
+  flex: 1;
+  background-color: rgba(16, 31, 48, 0.9); /* Darker input background */
+  border: 1px solid rgba(0, 188, 212, 0.5); /* Cyan border */
+  border-radius: 6px; /* More rounded */
+  padding: 12px 15px; /* Increased padding */
+  color: #e0e0e0;
+  font-size: 0.9rem; /* Slightly larger font */
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3), 0 0 15px rgba(0, 188, 212, 0.3); /* Cyan focus glow */
+  border-color: #00bcd4;
+}
+
+.drop-area-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease-out 1.5s;
+  animation-fill-mode: backwards;
+}
+
+.drop-area {
+  width: 100%;
+  padding: 50px 20px; /* Increased padding */
+  border: 2px dashed rgba(0, 188, 212, 0.6); /* Cyan dashed border */
+  border-radius: 10px; /* More rounded */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.drop-area:hover {
+  border-color: #00bcd4; /* Solid cyan border on hover */
+  border-style: solid;
+  transform: scale(1.03); /* Slightly larger scale */
+  background-color: rgba(0, 188, 212, 0.1); /* Faint cyan background on hover */
+  box-shadow: 0 0 20px rgba(0, 188, 212, 0.3); /* Glow effect */
+}
+
+.drop-area .icon svg { /* Target SVG within icon for transition */
+  transition: transform 0.3s ease-out;
+}
+
+.drop-area:hover .icon svg {
+  transform: scale(1.2) rotate(5deg); /* Animate icon on hover */
+}
+
+.icon {
+  margin-bottom: 16px;
+  color: #00bcd4; /* Cyan icon color */
+  font-size: 2.5rem; /* Larger icon */
+}
+
+.icon-small {
+  margin-left: 8px;
+}
+
+.drop-text {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #e0e0e0;
+}
+
+.file-size-limit {
+  font-size: 0.875rem;
+  color: #a0a0a0;
+}
+
+.selected-file {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #4caf50; /* Bright green for selected file */
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.send-button {
+  background-color: #00bcd4; /* Bright cyan */
+  border-radius: 8px; /* More rounded */
+  color: #0f0c29; /* Dark text for contrast */
+  border: none;
+  padding: 14px 28px; /* Increased padding */
+  font-size: 1.2rem; /* Larger font */
+  font-weight: 600; /* Bolder text */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: color 0.3s, transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  animation: fadeInUp 1s ease-out 2s;
+  animation-fill-mode: backwards;
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 0.5px; /* Slight letter spacing */
+}
+
+.send-button:hover {
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.05); /* Enhanced hover effect */
+  background-color: #00acc1; /* Slightly darker cyan on hover */
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4); /* Glow effect */
+}
+
+.send-button:disabled {
+  background-color: rgba(45, 57, 78, 0.7); /* Darker, desaturated for disabled */
+  color: #708090; /* Slate gray text */
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.status-container {
+  background-color: rgba(16, 31, 48, 0.8); /* Dark blue, semi-transparent */
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 90%;
+  text-align: left;
+  backdrop-filter: blur(5px);
+  animation: fadeInUp 1s ease-out 2.5s;
+  animation-fill-mode: backwards;
+  border: 1px solid rgba(0, 188, 212, 0.3); /* Subtle cyan border */
+}
+
+.status-text {
+  font-size: 0.875rem;
+  color: #c0c0c0; /* Lighter gray for status text */
+  white-space: pre-line;
+}
+
+.footer-text {
+  font-size: 0.875rem;
+  color: #808080; /* Medium gray for footer */
+  max-width: 80%;
+  animation: fadeInUp 1s ease-out 3s;
+  animation-fill-mode: backwards;
+}
+
+/* Language Selector Styles */
+.language-selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 100; /* Ensure it's above other elements */
+}
+
+.language-selector button {
+  background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
+  color: #b0b0b0; /* Light gray text */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+  padding: 8px 12px;
+  border-radius: 6px; /* More rounded */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+  font-size: 0.85rem;
+}
+
+.language-selector button:hover {
+  background-color: rgba(0, 188, 212, 0.2); /* Faint cyan background */
+  color: #00bcd4; /* Cyan text */
+  border-color: rgba(0, 188, 212, 0.5);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.language-selector button.active {
+  background-color: #00bcd4; /* Cyan for active button */
+  color: #0f0c29; /* Dark text for active button */
+  font-weight: bold;
+  border-color: #00bcd4;
+}
